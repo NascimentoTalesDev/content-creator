@@ -1,11 +1,17 @@
-import { Inter } from 'next/font/google'
+import Layout from '@/components/Layout'
+import Login from '@/components/login-btn'
+import { Roboto_Mono } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto_Mono = Roboto_Mono({ 
+  subsets: ['latin'],
+  weight: ['300', '500', '700']
+
+})
 
 export default function Home() {
   return (
-    <main className={inter}>
-      Hello
-    </main>
+    <Layout>
+
+    </Layout>
   )
 }

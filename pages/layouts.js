@@ -6,10 +6,13 @@ import styled from "styled-components";
 export default function Layouts() {
     const [fontFamily, setFontFamily] = useState('')
     const [colorBackground, setColorBackground] = useState('#c93131')
+    const [backgroundColorImage, setBackgroundColorImage] = useState('#cecece')
+    const [backgroundColorLink, setBackgroundColorLink] = useState('#cecece')
     const [textColorProduct, setTextColorProduct] = useState('#000')
     const [textColorPrecoAntigo, setTextColorPrecoAntigo] = useState('#000')
     const [textColorBackgroundPrecoNovo, setTextColorBackgroundPrecoNovo] = useState('#000')
     const [textColorPrecoNovo, setTextColorPrecoNovo] = useState('#fff')
+    const [marginTopImageContainer, setMarginTopImageContainer] = useState(10)
 
     const LayoutContainer = styled.section`
         height: 450px;
@@ -22,6 +25,7 @@ export default function Layouts() {
         margin: auto;
         background-color: ${colorBackground};
         font-family: ${fontFamily};
+        overflow: hidden;
 
     `
     const CentralContainer = styled.div`
@@ -33,10 +37,10 @@ export default function Layouts() {
         top: 0;
     `
     const ImageContainer = styled.div`
-        margin-top: 20%;
+        margin-top: ${marginTopImageContainer}%;
         width: 85%;
         border-radius: 10px;
-        background-color: white;////////////////////////////////////
+        background-color: ${backgroundColorImage};////////////////////////////////////
         padding: 2rem 2rem 2rem 2rem;
         display: flex;
         flex-direction: column;
@@ -90,8 +94,8 @@ export default function Layouts() {
         color: ${textColorPrecoNovo};
     `
     const LinkContainer = styled.div`
-        background-color: white;
-        height: 40px;
+        background-color: ${backgroundColorLink};
+        min-height: 40px;
         width: 100%;
         display: flex;
         align-items: center;
@@ -116,10 +120,6 @@ export default function Layouts() {
         <Layout>
             <section className="flex items-center  gap-2">
                 <div>
-                    <label>Cor de Fundo:</label>
-                    <input type="color" value={colorBackground} onChange={(ev) => setColorBackground(ev.target.value)} />
-                </div>
-                <div>
                     <label>Fonte</label>
                     <select onChange={(ev) => setFontFamily(ev.target.value)}>
                         <option value="sans">Sans</option>
@@ -127,21 +127,22 @@ export default function Layouts() {
                         <option value="roboto">Roboto</option>
                     </select>
                 </div>
-
+                <div>
+                    <label>Cor de Fundo:</label>
+                    <input type="color" value={colorBackground} onChange={(ev) => setColorBackground(ev.target.value)} />
+                    <input type="color" value={backgroundColorImage} onChange={(ev) => setBackgroundColorImage(ev.target.value)} />
+                    <input type="color" value={textColorBackgroundPrecoNovo} onChange={(ev) => setTextColorBackgroundPrecoNovo(ev.target.value)} />
+                    <input type="color" value={backgroundColorLink} onChange={(ev) => setBackgroundColorLink(ev.target.value)} />
+                </div>
                 <div>
                     <label>Cor do Texto: </label>
                     <input type="color" value={textColorProduct} onChange={(ev) => setTextColorProduct(ev.target.value)} />
-                </div>
-                <div>
-                    <label>Preço Antigo: </label>
                     <input type="color" value={textColorPrecoAntigo} onChange={(ev) => setTextColorPrecoAntigo(ev.target.value)} />
-                </div>
-                <div>
-                    <label>Preço Antigo: </label>
-                    <label>Cor de fundo: </label>
-                    <input type="color" value={textColorBackgroundPrecoNovo} onChange={(ev) => setTextColorBackgroundPrecoNovo(ev.target.value)} />
-                    <label>Cor do texto: </label>
                     <input type="color" value={textColorPrecoNovo} onChange={(ev) => setTextColorPrecoNovo(ev.target.value)} />
+                </div>                
+                <div>
+                    <label>Distância do topo: </label>
+                    <input type="range" value={marginTopImageContainer} onChange={(ev) => setMarginTopImageContainer(ev.target.value)} />
                 </div>
             </section>
             <section className="flex h-full flex-wrap justify-center items-center gap-3">

@@ -1,5 +1,4 @@
 import Layout from '@/components/Layout'
-import Login from '@/components/login-btn'
 import { Roboto_Mono } from 'next/font/google'
 
 const roboto_Mono = Roboto_Mono({ 
@@ -11,7 +10,7 @@ const roboto_Mono = Roboto_Mono({
 export default function Home() {
   return (
     <Layout>
-
+      <h1>HomePage</h1>
     </Layout>
   )
 }

@@ -4,25 +4,21 @@ import { useRouter } from "next/router";
 
 export default function Navbar(){
     const inactiveLink = 'p-3';
-    const activeLink = inactiveLink+' bg-red-500';
+    const activeLink = inactiveLink+' bg-white';
     const router = useRouter()
     const {pathname} = router
     
-    function verificar(ev) {
-        console.log(ev.target);
-        console.log(pathname);
-    }
     return(
         <div className="flex flex-col py-5 justify-between w-52 min-h-screen">
             <div>
                 Logo
             </div>
             <ul className="flex flex-col">
-                <li className={pathname === '/' ? activeLink : inactiveLink}><Link href={"/"}>Dashboard</Link></li>
-                <li className={pathname.includes('/buscar') ? activeLink : inactiveLink}><Link href={"/buscar"}>Buscar</Link></li>
-                <li className={inactiveLink}><Link href={"/prints"}>Prints prontos</Link></li>
-                <li onClick={verificar} className={pathname.includes('layouts') ? activeLink : inactiveLink}><Link href={"/layouts"}>Layouts</Link></li>
-                <li className={inactiveLink}><Link href={"/buscar"}>Configurações</Link></li>
+                <Link href={"/"}><li className={pathname === '/' ? activeLink : inactiveLink}>Dashboard</li></Link>
+                <Link href={"/buscar"}><li className={pathname.includes('/buscar') ? activeLink : inactiveLink}>Buscar</li></Link>
+                <Link href={"/prints"}><li className={inactiveLink}>Prints prontos</li></Link>
+                <Link href={"/layouts"}><li className={pathname.includes('layouts') ? activeLink : inactiveLink}>Layouts</li></Link>
+                <Link href={"/buscar"}><li className={inactiveLink}>Configurações</li></Link>
             </ul>
             <button onClick={() => signOut()}>Sign out</button>
         </div>

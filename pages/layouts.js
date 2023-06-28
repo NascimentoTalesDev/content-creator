@@ -4,14 +4,17 @@ import styled from "styled-components";
 
 
 export default function Layouts() {
+    
     const [fontFamily, setFontFamily] = useState('')
-    const [colorBackground, setColorBackground] = useState('#c93131')
-    const [backgroundColorImage, setBackgroundColorImage] = useState('#cecece')
-    const [backgroundColorLink, setBackgroundColorLink] = useState('#cecece')
-    const [textColorProduct, setTextColorProduct] = useState('#000')
-    const [textColorPrecoAntigo, setTextColorPrecoAntigo] = useState('#000')
-    const [textColorBackgroundPrecoNovo, setTextColorBackgroundPrecoNovo] = useState('#000')
-    const [textColorPrecoNovo, setTextColorPrecoNovo] = useState('#fff')
+    const [colorBackground, setColorBackground] = useState('#CECECE')
+    const [backgroundColorImage, setBackgroundColorImage] = useState('#FFFFFF')
+    const [backgroundColorLink, setBackgroundColorLink] = useState('#FFFFFF')
+    const [backgroundPrecoNovo, setBackgroundPrecoNovo] = useState('#CECECE')
+    const [textColorProduct, setTextColorProduct] = useState('')
+    const [textColorPrecoAntigo, setTextColorPrecoAntigo] = useState('')
+    const [textColorPrecoNovo, setTextColorPrecoNovo] = useState('')
+    const [textColorLink, setTextColorLink] = useState('')
+    const [textColorAviso, setTextColorAviso] = useState('')
     const [marginTopImageContainer, setMarginTopImageContainer] = useState(10)
 
     const LayoutContainer = styled.section`
@@ -26,7 +29,6 @@ export default function Layouts() {
         background-color: ${colorBackground};
         font-family: ${fontFamily};
         overflow: hidden;
-
     `
     const CentralContainer = styled.div`
         display: flex;
@@ -39,9 +41,9 @@ export default function Layouts() {
     const ImageContainer = styled.div`
         margin-top: ${marginTopImageContainer}%;
         width: 85%;
-        border-radius: 10px;
+        border-radius: 5px;
         background-color: ${backgroundColorImage};////////////////////////////////////
-        padding: 2rem 2rem 2rem 2rem;
+        padding: 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -54,7 +56,7 @@ export default function Layouts() {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 0.2rem auto 5rem auto;
+        margin: 0.2rem auto 5rem;
         height: 60%;
         min-height: 60%;
     `
@@ -85,8 +87,8 @@ export default function Layouts() {
         color: ${textColorPrecoAntigo};
     `
     const PrecoNovo = styled.span`
-        font-size: 10px;
-        background-color: ${textColorBackgroundPrecoNovo};
+        font-size: 15px;
+        background-color: ${backgroundPrecoNovo};
         padding: 1px;
         border-radius: 2px;
         margin-bottom: 1px;
@@ -105,6 +107,7 @@ export default function Layouts() {
         margin-left: 6px;
         font-size: 10px;
         font-weight: 500;
+        color: ${textColorLink};
     `
     const MessageContainer = styled.div`
         width: 85%;
@@ -114,6 +117,7 @@ export default function Layouts() {
         font-size: 8px;
         font-weight: bold;
         text-transform: uppercase;
+        color: ${textColorAviso};
     `
 
     return (
@@ -131,7 +135,7 @@ export default function Layouts() {
                     <label>Cor de Fundo:</label>
                     <input type="color" value={colorBackground} onChange={(ev) => setColorBackground(ev.target.value)} />
                     <input type="color" value={backgroundColorImage} onChange={(ev) => setBackgroundColorImage(ev.target.value)} />
-                    <input type="color" value={textColorBackgroundPrecoNovo} onChange={(ev) => setTextColorBackgroundPrecoNovo(ev.target.value)} />
+                    <input type="color" value={backgroundPrecoNovo} onChange={(ev) => setBackgroundPrecoNovo(ev.target.value)} />
                     <input type="color" value={backgroundColorLink} onChange={(ev) => setBackgroundColorLink(ev.target.value)} />
                 </div>
                 <div>
@@ -139,6 +143,8 @@ export default function Layouts() {
                     <input type="color" value={textColorProduct} onChange={(ev) => setTextColorProduct(ev.target.value)} />
                     <input type="color" value={textColorPrecoAntigo} onChange={(ev) => setTextColorPrecoAntigo(ev.target.value)} />
                     <input type="color" value={textColorPrecoNovo} onChange={(ev) => setTextColorPrecoNovo(ev.target.value)} />
+                    <input type="color" value={textColorLink} onChange={(ev) => setTextColorLink(ev.target.value)} />
+                    <input type="color" value={textColorAviso} onChange={(ev) => setTextColorAviso(ev.target.value)} />
                 </div>                
                 <div>
                     <label>Distância do topo: </label>
@@ -169,9 +175,6 @@ export default function Layouts() {
                         </CentralContainer>
                     </LayoutContainer>
                 </div>
-                
-               
-
             </section>
         </Layout>
     )

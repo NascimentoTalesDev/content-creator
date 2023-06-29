@@ -1,20 +1,23 @@
 import Layout from "@/components/Layout";
+import MessageAlert from "@/components/Message";
+import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
-
+import useFlashMessage from '../hooks/useFlashMessage'
 
 export default function Layouts() {
-    
-    const [fontFamily, setFontFamily] = useState('')
+    const { setFlashMessage } = useFlashMessage()
+
+    const [fontFamily, setFontFamily] = useState('Arial')
     const [colorBackground, setColorBackground] = useState('#CECECE')
     const [backgroundColorImage, setBackgroundColorImage] = useState('#FFFFFF')
     const [backgroundColorLink, setBackgroundColorLink] = useState('#FFFFFF')
     const [backgroundPrecoNovo, setBackgroundPrecoNovo] = useState('#CECECE')
-    const [textColorProduct, setTextColorProduct] = useState('')
-    const [textColorPrecoAntigo, setTextColorPrecoAntigo] = useState('')
-    const [textColorPrecoNovo, setTextColorPrecoNovo] = useState('')
-    const [textColorLink, setTextColorLink] = useState('')
-    const [textColorAviso, setTextColorAviso] = useState('')
+    const [textColorProduct, setTextColorProduct] = useState('#000000')
+    const [textColorPrecoAntigo, setTextColorPrecoAntigo] = useState('#000000')
+    const [textColorPrecoNovo, setTextColorPrecoNovo] = useState('#000000')
+    const [textColorLink, setTextColorLink] = useState('#000000')
+    const [textColorAviso, setTextColorAviso] = useState('#000000')
     const [marginTopImageContainer, setMarginTopImageContainer] = useState(10)
 
     const LayoutContainer = styled.section`
@@ -120,15 +123,52 @@ export default function Layouts() {
         color: ${textColorAviso};
     `
 
+    async function saveLayout(ev) {
+        let msgText = 'Layout salvo com sucesso!'
+        let msgType = 'success'
+
+        ev.preventDefault()
+        const data = {
+            fontFamily, 
+            colorBackground, 
+            backgroundColorImage, 
+            backgroundColorLink, 
+            backgroundPrecoNovo, 
+            textColorProduct, 
+            textColorPrecoAntigo, 
+            textColorPrecoNovo, 
+            textColorLink, 
+            textColorAviso, 
+            marginTopImageContainer}
+            try {
+                await axios.post("/api/layout", data)
+            } catch (error) {
+                msgText = error.response.data.message
+                msgType = 'error'
+            }
+            setFlashMessage(msgText, msgType)
+    }
+
     return (
         <Layout>
-            <section className="flex items-center  gap-2">
+            <MessageAlert/>
+            <form onSubmit={saveLayout} className="flex items-center  gap-2">
                 <div>
                     <label>Fonte</label>
                     <select onChange={(ev) => setFontFamily(ev.target.value)}>
-                        <option value="sans">Sans</option>
-                        <option value="arial">Arial</option>
-                        <option value="roboto">Roboto</option>
+                        <option value={"Arial"}>Arial</option>
+                        <option value={"Calibri"}>Calibri</option>
+                        <option value={"Cambria"}>Cambria</option>
+                        <option value={"Courier"}>Courier</option>
+                        <option value={"Franklin"}>Franklin</option>
+                        <option value={"Georgia"}>Georgia</option>
+                        <option value={"Haettenschweiler"}>Haettenschweiler</option>
+                        <option value={"Helvetica"}>Helvetica</option>
+                        <option value={"Medium"}>Medium</option>
+                        <option value={"monospace"}>Monospace</option>
+                        <option value={"sans-serif"}>Sans-serif</option>
+                        <option value={"Tahoma"}>Tahoma</option>
+                        <option value={"Verdana"}>Verdana</option>
                     </select>
                 </div>
                 <div>
@@ -150,7 +190,8 @@ export default function Layouts() {
                     <label>Distância do topo: </label>
                     <input type="range" value={marginTopImageContainer} onChange={(ev) => setMarginTopImageContainer(ev.target.value)} />
                 </div>
-            </section>
+                <button type="submit">Salvar</button>
+            </form>
             <section className="flex h-full flex-wrap justify-center items-center gap-3">
 
                 <div>

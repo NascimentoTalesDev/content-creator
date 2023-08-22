@@ -6,13 +6,6 @@ export default async function handle(req, res){
     await mongooseConnect()
 
     if(method === "GET"){
-        let id = req.params
-
-        console.log(id);
-
-    }
-
-    if(method === "GET"){
         let names = await Layout.find()
         res.json(names)
     }
@@ -47,7 +40,6 @@ export default async function handle(req, res){
             textColorAviso, 
             marginTopImageContainer
         })
-        console.log(name);
         res.json(LayoutDoc)
     }
 } 

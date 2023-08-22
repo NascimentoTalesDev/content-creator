@@ -15,7 +15,7 @@ export default function Navbar(){
             </div>
             <ul className="flex flex-col">
                 <Link href={"/"}><li className={pathname === '/' ? activeLink : inactiveLink}>Dashboard</li></Link>
-                <Link href={"/buscar"}><li className={pathname.includes('/buscar') ? activeLink : inactiveLink}>Buscar</li></Link>
+                <Link href={"/search"}><li className={pathname.includes('/search') ? activeLink : inactiveLink}>Buscar</li></Link>
                 <Link href={"/prints"}><li className={inactiveLink}>Prints prontos</li></Link>
                 <Link href={"/layouts"}><li className={pathname.includes('layouts') ? activeLink : inactiveLink}>Layouts</li></Link>
                 <Link href={"/buscar"}><li className={inactiveLink}>Configurações</li></Link>

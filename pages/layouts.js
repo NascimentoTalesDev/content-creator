@@ -4,10 +4,13 @@ import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
 import useFlashMessage from '../hooks/useFlashMessage'
+import Spinner from "../components/Spinner"
+import { useRouter } from "next/router";
 
 export default function Layouts() {
     const { setFlashMessage } = useFlashMessage()
 
+    const [name, setName] = useState('')
     const [fontFamily, setFontFamily] = useState('Arial')
     const [colorBackground, setColorBackground] = useState('#CECECE')
     const [backgroundColorImage, setBackgroundColorImage] = useState('#FFFFFF')
@@ -19,6 +22,12 @@ export default function Layouts() {
     const [textColorLink, setTextColorLink] = useState('#000000')
     const [textColorAviso, setTextColorAviso] = useState('#000000')
     const [marginTopImageContainer, setMarginTopImageContainer] = useState(10)
+
+    const [isSaving, setIsSaving] = useState(false)
+    const [goToSearch, setGoToSearch] = useState(false)
+
+    const router = useRouter()
+
 
     const LayoutContainer = styled.section`
         height: 450px;
@@ -124,11 +133,14 @@ export default function Layouts() {
     `
 
     async function saveLayout(ev) {
-        let msgText = 'Layout salvo com sucesso!'
+        setIsSaving(true)
+
+        let msgText = 'Layout salvo com sucesso! Você será direcionado para a Busca'
         let msgType = 'success'
 
         ev.preventDefault()
         const data = {
+            name,
             fontFamily, 
             colorBackground, 
             backgroundColorImage, 
@@ -146,12 +158,28 @@ export default function Layouts() {
                 msgText = error.response.data.message
                 msgType = 'error'
             }
+            setIsSaving(false)
             setFlashMessage(msgText, msgType)
+            setInterval(() => {
+                
+                setGoToSearch(true)
+            }, 5000);
+    }
+    if(goToSearch){
+        router.push('/search')
     }
 
     return (
         <Layout>
+            
+            <div className="relative h-full w-full p-2">
             <MessageAlert/>
+            {isSaving && (
+                <div className="flex flex-col absolute h-full w-full z-50 items-center justify-center bg-gray-500">
+                    <p className="mb-2">Salvando...</p>
+                    <Spinner />
+                </div>
+            )}
             <form onSubmit={saveLayout} className="flex items-center  gap-2">
                 <div>
                     <label>Fonte</label>
@@ -190,6 +218,10 @@ export default function Layouts() {
                     <label>Distância do topo: </label>
                     <input type="range" value={marginTopImageContainer} onChange={(ev) => setMarginTopImageContainer(ev.target.value)} />
                 </div>
+                <div>
+                    <label>Nome:</label>
+                    <input className="bg-blue-500 pl-1" type="name" value={name} required onChange={(ev) => setName(ev.target.value)} />
+                </div>
                 <button type="submit">Salvar</button>
             </form>
             <section className="flex h-full flex-wrap justify-center items-center gap-3">
@@ -217,6 +249,8 @@ export default function Layouts() {
                     </LayoutContainer>
                 </div>
             </section>
+            </div>
+            
         </Layout>
     )
 }

@@ -49,7 +49,7 @@ export default function Layout({ children }) {
                     <div className="h-full w-2/3">
                         <DivLeft className="flex items-center justify-center">
                             <span className="text-black font-bold bg-white p-2 text-center">
-                                insira o CÓDIGO do produto e tenha o pôster na palma da mão!
+                                Insira o CÓDIGO do produto e tenha o pôster na palma da mão!
                             </span>
                         </DivLeft>
                     </div>

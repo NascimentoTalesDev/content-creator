@@ -15,7 +15,7 @@ function MessageAlert() {
 
             setTimeout(() => {
                 setVisibility(false)
-            }, 2000);
+            }, 60000);
         })
         
     }, [])

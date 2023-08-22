@@ -5,8 +5,21 @@ export default async function handle(req, res){
     const {method} = req;
     await mongooseConnect()
 
+    if(method === "GET"){
+        let id = req.params
+
+        console.log(id);
+
+    }
+
+    if(method === "GET"){
+        let names = await Layout.find()
+        res.json(names)
+    }
+
     if(method === 'POST'){
         const {
+            name,
             fontFamily, 
             colorBackground, 
             backgroundColorImage, 
@@ -21,18 +34,20 @@ export default async function handle(req, res){
         } = req.body
 
         const LayoutDoc = await Layout.create({
-           fontFamily, 
-           colorBackground, 
-           backgroundColorImage, 
-           backgroundColorLink, 
-           backgroundPrecoNovo, 
-           textColorProduct, 
-           textColorPrecoAntigo, 
-           textColorPrecoNovo, 
-           textColorLink, 
-           textColorAviso, 
-           marginTopImageContainer
+            name,
+            fontFamily, 
+            colorBackground, 
+            backgroundColorImage, 
+            backgroundColorLink, 
+            backgroundPrecoNovo, 
+            textColorProduct, 
+            textColorPrecoAntigo, 
+            textColorPrecoNovo, 
+            textColorLink, 
+            textColorAviso, 
+            marginTopImageContainer
         })
+        console.log(name);
         res.json(LayoutDoc)
     }
 } 

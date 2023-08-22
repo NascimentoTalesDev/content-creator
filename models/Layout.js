@@ -1,6 +1,7 @@
 import { Schema, model, models } from "mongoose";
 
 const LayoutSchema = new Schema({
+    name: {type: String},
     fontFamily: {type: String},
     colorBackground: {type: String},
     backgroundColorImage: {type: String},

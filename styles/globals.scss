@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-
+    --verde : green;
+    --branco : #FFFFFF;
 }
 *{
     margin: 0;
@@ -20,3 +21,4 @@
 body {
     
 }
+

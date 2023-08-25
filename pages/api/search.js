@@ -31,6 +31,10 @@ export default async function handle(req, res){
             })
             res.json(ProductDoc)
         }
-
     }    
+    if (method === "GET") {
+        
+        const itemsList = await Product.find()
+        res.json(itemsList)
+    }
 } 

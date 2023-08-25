@@ -29,10 +29,6 @@ export default function Buscar(){
         setLayout(layouts[data]);
     }
     
-
-    
-    
-
     async function searchPost(ev){
         ev.preventDefault();
         const meuArray = []

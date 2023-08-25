@@ -5,6 +5,9 @@
 :root {
     --verde : green;
     --branco : #FFFFFF;
+    --cinza: #343838;
+    --cinza2: #2b2b2b;
+    --blue: rgb(94 234 212);
 }
 *{
     margin: 0;
@@ -16,9 +19,40 @@
     a{
         text-decoration: none;
     }
+    outline: none;
 }
 
 body {
     
 }
-
+.h1{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.bgGray{
+    background-color: var(--cinza);
+    color: var(--branco);
+}
+.divFlex{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+.salvar{
+    background-color: green;
+    color: var(--branco);
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.inputBtn{
+    border: 1px solid gray;
+    
+}
+.inputBtn:focus{
+    border-color: var(--cinza2);
+}
+.blue {
+    background-color: var(--blue) ;
+}

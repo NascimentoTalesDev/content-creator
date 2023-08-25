@@ -7,9 +7,14 @@ interface ButtonProps{
 
 const Button = styled.input<ButtonProps>`
     background-color: green;
-    width: 100px;
     margin: auto;
+    width: 100%;
+    padding: 5px;
     color: #FFF;
+    cursor: pointer;
+    &&:hover{
+        background-color: #008000eb;
+    }
 `
 
 export default Button; 

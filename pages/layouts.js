@@ -135,7 +135,7 @@ export default function Layouts() {
     async function saveLayout(ev) {
         setIsSaving(true)
 
-        let msgText = 'Layout salvo com sucesso! Você será direcionado para a Busca'
+        let msgText = 'Layout salvo com sucesso! Você será redirecionado para a Busca'
         let msgType = 'success'
 
         ev.preventDefault()
@@ -171,19 +171,20 @@ export default function Layouts() {
 
     return (
         <Layout>
-            
-            <div className="relative h-full w-full p-2">
             <MessageAlert/>
+            <div className="relative flex h-full w-full p-2">
             {isSaving && (
                 <div className="flex flex-col absolute h-full w-full z-50 items-center justify-center bg-gray-500">
                     <p className="mb-2">Salvando...</p>
                     <Spinner />
                 </div>
             )}
-            <form onSubmit={saveLayout} className="flex items-center  gap-2">
-                <div>
-                    <label>Fonte</label>
-                    <select onChange={(ev) => setFontFamily(ev.target.value)}>
+            
+            <form onSubmit={saveLayout} className="flex flex-col  gap-2 w-96">
+                <h1 className="h1 mb-8">Personalize aqui o seu Layout</h1>    
+                <div className="divFlex">
+                    <label>Fonte:</label>
+                    <select className="ml-2" onChange={(ev) => setFontFamily(ev.target.value)}>
                         <option value={"Arial"}>Arial</option>
                         <option value={"Calibri"}>Calibri</option>
                         <option value={"Cambria"}>Cambria</option>
@@ -199,30 +200,30 @@ export default function Layouts() {
                         <option value={"Verdana"}>Verdana</option>
                     </select>
                 </div>
-                <div>
+                <div className="divFlex">
                     <label>Cor de Fundo:</label>
-                    <input type="color" value={colorBackground} onChange={(ev) => setColorBackground(ev.target.value)} />
+                    <input className="ml-2" type="color" value={colorBackground} onChange={(ev) => setColorBackground(ev.target.value)} />
                     <input type="color" value={backgroundColorImage} onChange={(ev) => setBackgroundColorImage(ev.target.value)} />
                     <input type="color" value={backgroundPrecoNovo} onChange={(ev) => setBackgroundPrecoNovo(ev.target.value)} />
                     <input type="color" value={backgroundColorLink} onChange={(ev) => setBackgroundColorLink(ev.target.value)} />
                 </div>
-                <div>
+                <div className="divFlex">
                     <label>Cor do Texto: </label>
-                    <input type="color" value={textColorProduct} onChange={(ev) => setTextColorProduct(ev.target.value)} />
+                    <input className="ml-2" type="color" value={textColorProduct} onChange={(ev) => setTextColorProduct(ev.target.value)} />
                     <input type="color" value={textColorPrecoAntigo} onChange={(ev) => setTextColorPrecoAntigo(ev.target.value)} />
                     <input type="color" value={textColorPrecoNovo} onChange={(ev) => setTextColorPrecoNovo(ev.target.value)} />
                     <input type="color" value={textColorLink} onChange={(ev) => setTextColorLink(ev.target.value)} />
                     <input type="color" value={textColorAviso} onChange={(ev) => setTextColorAviso(ev.target.value)} />
                 </div>                
-                <div>
+                <div className="divFlex">
                     <label>Distância do topo: </label>
-                    <input type="range" value={marginTopImageContainer} onChange={(ev) => setMarginTopImageContainer(ev.target.value)} />
+                    <input className="ml-2" type="range" value={marginTopImageContainer} onChange={(ev) => setMarginTopImageContainer(ev.target.value)} />
                 </div>
-                <div>
+                <div className="divFlex">
                     <label>Nome:</label>
-                    <input className="bg-blue-500 pl-1" type="name" value={name} required onChange={(ev) => setName(ev.target.value)} />
+                    <input className="inputBtn ml-2 pl-1" type="name" value={name} required onChange={(ev) => setName(ev.target.value)} />
                 </div>
-                <button type="submit">Salvar</button>
+                <button className="salvar" type="submit">Salvar</button>
             </form>
             <section className="flex h-full flex-wrap justify-center items-center gap-3">
 

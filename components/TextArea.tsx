@@ -5,14 +5,14 @@ interface TextAreaProps{
 }
 
 const TextArea = styled.textarea<TextAreaProps>`
-    background-color: red;
-    color: white;
+    background-color: #CECECE;
     resize: none;
+    padding-left: 2px;
+    border: 1px solid #CECECE;
     margin: ${props => props.margin ? props.margin : '10px'};
     &&:focus{
-        border: none;
         outline: none;
-        background-color: #585858;
+        border: 1px solid #2b2b2b;
     }
 `
 

@@ -12,6 +12,7 @@ export default function Buscar(){
     const [layouts, setLayouts] = useState('')
     const [layout, setLayout] = useState('')
     const [id, setId] = useState(0)
+    const [cods, setCods] = useState([])
     
     useEffect(()=>{
         axios.get("./api/layout").then(response =>{
@@ -28,6 +29,23 @@ export default function Buscar(){
         setLayout(layouts[data]);
     }
     
+
+    
+    
+
+    async function searchPost(ev){
+        ev.preventDefault();
+        const meuArray = []
+        const um = cods 
+
+        const tratado = um.trim().trimEnd().split(" ")
+        meuArray.push(tratado)
+        await axios.post("/api/search", meuArray)
+        
+    }
+
+
+
     const LayoutContainer = styled.section`
         height: 450px;
         width: 250px;
@@ -175,12 +193,12 @@ export default function Buscar(){
                                     
                     </div>
                 </div>
-                <div className="w-96 flex justify-center">
+                <div className="w-96 flex h-full items-center">
                     <div className="w-full">
                         <h1>Insira o/os CODIGO(S) abaixo</h1>
                                     
-                        <form className="flex flex-col" type="form" action="/search" method="POST">
-                            <TextArea rows={10} cols={8} margin={'1px'} />
+                        <form onSubmit={searchPost} value={cods} className="flex flex-col" type="form" >
+                            <TextArea onChange={(ev) => setCods(ev.target.value)} rows={10} cols={8} margin={'1px'} />
                             <Button type="submit" value='Buscar'/>
                         </form>
                     </div>

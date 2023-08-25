@@ -82,7 +82,7 @@ export default function Layout({ children }) {
         )
     }
     return (
-        <div className="flex min-h-screen overflow-hidden bg-teal-300">
+        <div className="blue flex min-h-screen overflow-hidden">
             <div className="min-w-40">
                 <Navbar />
             </div>

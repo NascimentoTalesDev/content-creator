@@ -39,48 +39,48 @@ const ButtonLogin = styled.input`
 
 export default function Layout({ children }) {
 
-    const { data: session } = useSession()
-    if (!session) {
-        return (
-            <div className="flex justify-center items-center bg-teal-300 h-screen">
-
-                <div className="flex w-11/12 max-w-4xl h-5/6 rounded-md overflow-hidden">
-
-                    <div className="h-full w-2/3">
-                        <DivLeft className="flex items-center justify-center">
-                            <span className="text-black font-bold bg-white p-2 text-center">
-                                Insira o CÓDIGO do produto e tenha o pôster na palma da mão!
-                            </span>
-                        </DivLeft>
-                    </div>
-
-                    <div className="flex flex-1 flex-col pt-5 p-8 bg-zinc-200">
-                        <div className="text-right text-sm">
-                            <span>
-                                Ainda não tem conta? <b><a href="#" >Criar conta</a></b> 
-                            </span>
-                        </div>
-                        <div className="mt-16">
-                            <span className="text-black font-semibold text-3xl">Login</span>
-                            <form onSubmit={(ev) => ev.preventDefault()} className="flex flex-col w-80 mt-5">
-                                <Label>Nome:</Label>
-                                <Input />
-                                <Label>Senha:</Label>
-                                <Input />
-                                <ButtonLogin type="submit" value="Login"/>
-                            </form>
-                        </div>
-                        <div>
-                            <span>Ou</span>
-                            <h2 className="text-sm mt-2 mb-5">Faça login com:</h2>
-                            <button onClick={() => signIn("google")}><img className="w-24" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"></img></button>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        )
-    }
+    //const { data: session } = useSession()
+    //if (!session) {
+    //    return (
+    //        <div className="flex justify-center items-center bg-teal-300 h-screen">
+//
+    //            <div className="flex w-11/12 max-w-4xl h-5/6 rounded-md overflow-hidden">
+//
+    //                <div className="h-full w-2/3">
+    //                    <DivLeft className="flex items-center justify-center">
+    //                        <span className="text-black font-bold bg-white p-2 text-center">
+    //                            Insira o CÓDIGO do produto e tenha o pôster na palma da mão!
+    //                        </span>
+    //                    </DivLeft>
+    //                </div>
+//
+    //                <div className="flex flex-1 flex-col pt-5 p-8 bg-zinc-200">
+    //                    <div className="text-right text-sm">
+    //                        <span>
+    //                            Ainda não tem conta? <b><a href="#" >Criar conta</a></b> 
+    //                        </span>
+    //                    </div>
+    //                    <div className="mt-16">
+    //                        <span className="text-black font-semibold text-3xl">Login</span>
+    //                        <form onSubmit={(ev) => ev.preventDefault()} className="flex flex-col w-80 mt-5">
+    //                            <Label>Nome:</Label>
+    //                            <Input />
+    //                            <Label>Senha:</Label>
+    //                            <Input />
+    //                            <ButtonLogin type="submit" value="Login"/>
+    //                        </form>
+    //                    </div>
+    //                    <div>
+    //                        <span>Ou</span>
+    //                        <h2 className="text-sm mt-2 mb-5">Faça login com:</h2>
+    //                        <button onClick={() => signIn("google")}><img className="w-24" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"></img></button>
+    //                    </div>
+    //                </div>
+    //            </div>
+    //            
+    //        </div>
+    //    )
+    //}
     return (
         <div className="blue flex min-h-screen overflow-hidden">
             <div className="min-w-40">

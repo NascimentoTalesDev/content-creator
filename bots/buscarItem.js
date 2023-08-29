@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer")
-require("dotenv").config()
+
 
 module.exports = async function buscar(codigo, item) {
   let product;

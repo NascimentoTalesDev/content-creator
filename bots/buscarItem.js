@@ -13,6 +13,7 @@ module.exports = async function buscar(codigo, item) {
     let url = "https://www.magazinevoce.com.br/nascimentotales/p/";
 
     const browser = await puppeteer.launch({ 
+        headless: "new",
         args: [
             "--disable-setuid-sandbox",
             "--no-sandbox",

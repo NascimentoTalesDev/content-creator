@@ -15,7 +15,7 @@ export default function FinishedPrints(){
     return(
         <Layout>
             {items.length > 0 && (items.map(item =>
-                <p>{item.nomeProduto}</p>
+                <p key={item}>{item.nomeProduto}</p>
             ))}
         </Layout>
     )
